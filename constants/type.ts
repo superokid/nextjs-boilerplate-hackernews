@@ -7,9 +7,9 @@ export interface StoryItem {
   kids: number[];
   score: number;
   time: number;
-  title: string;
+  title?: string;
   type: string;
   url: string;
 }
 
-export type StoryItemRes = StoryItem[];
+export type Stories = StoryItem[];

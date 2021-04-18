@@ -1,3 +1,4 @@
+import { colors } from '@constants/theme';
 import Link from 'next/link';
 import { navArr, nav } from '../constants/nav';
 
@@ -17,14 +18,14 @@ const Navbar = () => {
 
       <style jsx>{`
         .container {
-          background-color: rgb(255, 102, 0);
+          background-color: ${colors.primary};
           display: flex;
         }
         .logo {
           font-weight: bold;
         }
         .link {
-          color: black;
+          color: ${colors.black};
           text-decoration: none;
         }
       `}</style>

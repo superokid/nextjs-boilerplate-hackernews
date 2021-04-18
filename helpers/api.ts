@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { StoriesUrl, nav } from '../constants/nav';
-import { StoriesRes, StoryItemRes } from '../constants/type';
+import { StoriesRes, Stories } from '../constants/type';
 import config from '../constants/config';
 
 const { API_URL } = process.env;
@@ -8,7 +8,7 @@ const { API_URL } = process.env;
 export const getStoriesApi = async (
   url: StoriesUrl,
   page: number
-): Promise<StoryItemRes> => {
+): Promise<Stories> => {
   if (isNaN(page)) {
     page = 1;
   }
@@ -17,9 +17,12 @@ export const getStoriesApi = async (
   return data;
 };
 
-export const getItemsApi = async (stories, page): Promise<StoryItemRes> => {
+export const getItemsApi = async (stories = [], page): Promise<Stories> => {
   const arrRequest = stories
-    .slice(page, config.STORIES_PER_PAGE * page)
+    .slice(
+      config.STORIES_PER_PAGE * (page - 1),
+      config.STORIES_PER_PAGE * (page - 1) + config.STORIES_PER_PAGE
+    )
     .map(async (id) => {
       const item = await axios({
         method: 'GET',

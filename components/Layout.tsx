@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { colors } from '@constants/theme';
 import Navbar from './Navbar';
 
 interface Props {}
@@ -18,10 +19,12 @@ const Layout: React.FC<Props> = ({ children }) => {
         .container {
           padding: 0 0.5rem;
           margin: 0 auto;
+          display: flex;
+          flex-direction: column;
         }
 
         main {
-          padding: 0 0.5rem;
+          background-color: ${colors.secondary};
         }
 
         footer {
