@@ -7,10 +7,15 @@ interface Props {
   as: string;
 }
 
-export const ButtonLink: React.FC<Props> = ({ href, as, children }) => {
+export const ButtonLink: React.FC<Props> = ({
+  href,
+  as,
+  children,
+  ...props
+}) => {
   return (
     <>
-      <Link href={href} as={as}>
+      <Link href={href} as={as || href} {...props}>
         <a className="button-link">{children}</a>
       </Link>
 

@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
-import { Stories as IStories } from '../constants/type';
+import { Stories as IStories } from '@constants/type';
 import config from '@constants/config';
 import { ButtonLink } from '@components/Button';
+import Story from './Story';
 
 interface Props {
   stories?: IStories;
@@ -22,7 +23,8 @@ const Stories = ({ stories = [], isLoading = true }: Props) => {
     <div>
       <ol start={(currentPage - 1) * config.STORIES_PER_PAGE + 1}>
         {stories.map((item) => {
-          return <li key={item?.id}>{item?.title}</li>;
+          if (!item) return <li />;
+          return <Story key={item.id} item={item} />;
         })}
       </ol>
       {!!stories.length && (

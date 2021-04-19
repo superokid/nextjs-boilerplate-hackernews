@@ -1,17 +1,26 @@
 import { colors } from '@constants/theme';
 import Link from 'next/link';
-import { navArr, nav } from '../constants/nav';
+import { useRouter } from 'next/router';
+import { navHeaderLink, nav } from '../constants/nav';
 
 const Navbar = () => {
+  const router = useRouter();
+
   return (
     <div className="container">
       <Link href="/top/1">
         <a className="logo link">Hacker News Next</a>
       </Link>
       <nav>
-        {navArr.map((item) => (
+        {navHeaderLink.map((item) => (
           <Link key={item} href={`/${item}/1`}>
-            <a className="link">{nav[item].title}</a>
+            <a
+              className={`link${
+                router.pathname === `/${item}/[page]` ? ' active' : ''
+              }`}
+            >
+              {nav[item].title}
+            </a>
           </Link>
         ))}
       </nav>
@@ -20,13 +29,31 @@ const Navbar = () => {
         .container {
           background-color: ${colors.primary};
           display: flex;
+          padding: 3px 2px;
         }
         .logo {
           font-weight: bold;
+          margin-right: 8px;
         }
         .link {
           color: ${colors.black};
           text-decoration: none;
+        }
+        .link.active {
+          color: ${colors.white};
+        }
+        nav a {
+          padding: 0 3px;
+        }
+        nav a:first-child:before {
+          display: none;
+        }
+        nav a:before {
+          content: '';
+          border-left: 1px solid black;
+          height: 60%;
+          display: inline-block;
+          margin-right: 8px;
         }
       `}</style>
     </div>
