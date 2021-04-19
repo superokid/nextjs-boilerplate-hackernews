@@ -25,3 +25,5 @@ docker run -p 3000:3000 hackernews
 ```
 
 then navigate to localhost:3000
+
+to stop container by image name `docker stop $(docker ps -q --filter ancestor=hackernews )`

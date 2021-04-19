@@ -3,7 +3,7 @@ import { StoriesUrl, nav } from '../constants/nav';
 import { StoriesRes, Stories } from '../constants/type';
 import config from '../constants/config';
 
-const { API_URL } = process.env;
+const API_URL = process.env.API_URL || 'https://hacker-news.firebaseio.com/v0';
 
 export const getStoriesApi = async (
   url: StoriesUrl,
