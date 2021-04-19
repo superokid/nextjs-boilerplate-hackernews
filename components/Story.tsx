@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import extractHostname from '@helpers/extractHostname';
 import { StoryItem } from '@constants/type';
 import { colors } from '@constants/theme';
@@ -17,7 +18,9 @@ const Story = ({ item }: Props) => {
             <span className="subtitle">({extractHostname(item.url)})</span>
           )}
         </div>
-        <div className="subtitle">{`${item.score} points by ${item.by} ${item.time}`}</div>
+        <div className="subtitle">{`${item.score} points by ${
+          item.by
+        } ${moment.unix(item.time).fromNow()}`}</div>
       </a>
 
       <style jsx>{`

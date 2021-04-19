@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { Stories as IStories } from '@constants/type';
 import config from '@constants/config';
 import { ButtonLink } from '@components/Button';
+import text from '@constants/text';
 import Story from './Story';
 
 interface Props {
@@ -11,7 +12,7 @@ interface Props {
 
 const Stories = ({ stories = [], isLoading = true }: Props) => {
   if (isLoading) {
-    return <div>loading...</div>;
+    return <div>{text.LOADING}</div>;
   }
   const router = useRouter();
   const currentPage = router.query.page
@@ -29,7 +30,7 @@ const Stories = ({ stories = [], isLoading = true }: Props) => {
       </ol>
       {!!stories.length && (
         <ButtonLink href={path} as={path}>
-          More
+          {text.MORE}
         </ButtonLink>
       )}
     </div>

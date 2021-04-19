@@ -1,6 +1,7 @@
-import { colors } from '@constants/theme';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import text from '@constants/text';
+import { colors } from '@constants/theme';
 import { navHeaderLink, nav } from '../constants/nav';
 
 const Navbar = () => {
@@ -9,7 +10,7 @@ const Navbar = () => {
   return (
     <div className="container">
       <Link href="/top/1">
-        <a className="logo link">Hacker News Next</a>
+        <a className="logo link">{text.APP_NAME}</a>
       </Link>
       <nav>
         {navHeaderLink.map((item) => (
@@ -50,7 +51,7 @@ const Navbar = () => {
         }
         nav a:before {
           content: '';
-          border-left: 1px solid black;
+          border-left: 1px solid ${colors.black};
           height: 60%;
           display: inline-block;
           margin-right: 8px;
